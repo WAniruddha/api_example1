@@ -1,8 +1,14 @@
 from fastapi import FastAPI
 import uvicorn
 import os
+from pydantic import BaseModel, Field
 
 app = FastAPI()
+
+class CalculationInput(BaseModel):
+    x: float = Field(..., description="The first number")
+    y: float = Field(..., description="The second number")
+    
 
 @app.get("/")
 def home():
